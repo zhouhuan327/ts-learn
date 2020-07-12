@@ -1,5 +1,7 @@
 // import './example/basic-type'
 // import './example/interface'
-import './example/project-decoration.ts'
+console.log('%c---basic-types log---', 'color:orange');
+import './example/basic-type';
 
-import arrayMpa = require('zh-test-array-map')
+console.log('%c---enmu log---', 'color:orange');
+import './example/enum';

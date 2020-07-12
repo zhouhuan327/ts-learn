@@ -1,3 +1,12 @@
+//! 八个原始类型：
+// boolean,number,string,null,undefined,Symbol,bigint,void
+// !顶级类型
+// any,unknow
+// !底部类型
+// never
+// !object
+// 数组，元祖，枚举等等
+
 //布尔类型
 let bool: boolean = false;
 
@@ -33,6 +42,23 @@ enum Roles {
 // }
 console.log(Roles);
 
+//void类型
+const consoleText = (text: string): void => {
+    console.log(text);
+};
+let v: void;
+//非严格模式
+v = undefined;
+v = null;
+
+// null和undefined
+//!既是值也是类型
+//!是其他类型的子类型
+let u: undefined = undefined;
+let n: null = null;
+num = undefined; //非严格模式
+num = null; //非严格模式
+
 //any类型
 let value: any;
 value = 123;
@@ -40,47 +66,24 @@ value = '123';
 value = false;
 const arr4: any[] = [1, 'a'];
 
-//void类型
-const consoleText = (text: string): void => {
-    console.log(text);
-};
-let v: void;
-v = undefined;
-v = null; //非严格模式
-
-// null和undefined
-//既是值也是类型
-//是其他类型的子类型
-let u: undefined = undefined;
-let n: null = null;
-num = undefined; //非严格模式
-num = null; //非严格模式
+//unknow类型
+// unknown 与 any 的不同之处,虽然它们都可以是任何类型,
+//!但是当 unknown 类型被确定是某个类型之前,它不能被进行任何操作比如实例化、getter、函数执行等等
+function getValue(value: unknown): string {
+    if (value instanceof Date) {
+        // 这里由于把value的类型缩小为Date实例的范围内,所以`value.toISOString()`
+        return value.toISOString();
+    }
+    //value.toISOString() Error
+}
 
 //never类型
+// 表示永不存在的值的类型
+//!没有类型是 never 的子类型或可以赋值给 never 类型（除了never本身之外）
 const errorFunc = (message: string): never => {
+    // 抛出异常的函数永远不会有返回值
     throw new Error(message);
 };
 const infiniteFunc = (): never => {
     while (true) {}
 };
-// let neverVariable = (() => {
-//   while (true) {}
-// })()
-// num = neverVariable
-
-//obj
-function consoleObject(obj: object): void {
-    console.log(obj);
-}
-consoleObject({ test: 'dd' });
-
-//类型断言
-//
-const getLenght = (target: string | number) => {
-    if ((<string>target).length || (target as string).length === 0) {
-        return (target as string).length;
-    }
-    return target.toString().length;
-};
-console.log(getLenght(123), getLenght('2'));
-let s = Symbol();
