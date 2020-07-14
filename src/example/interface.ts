@@ -2,6 +2,7 @@ interface NameInfo {
   firstName: string
   lastName: string
   age?: number
+  fn?: (parama: string) => string
   [prop: string]: any
 }
 
@@ -44,6 +45,11 @@ interface AddFunc {
   (num1: number, num2: number): number
 }
 
+const typeFunc: AddFunc = (n1,n2) => {
+  return n1+ n2
+}
+
+
 //定义索引类型
 interface RoleDic {
   [id: number]: string
@@ -52,6 +58,7 @@ interface RoleDic {
 const role: RoleDic = {
   a: '123',
   info: 'info',
+  1:'ddd'
 }
 console.log(role)
 
