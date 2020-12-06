@@ -8,3 +8,6 @@
 
 // console.log('%c---interface log---', 'color:orange');
 // import './example/interface';
+
+console.log("%c---泛型 log---", "color:orange");
+import "./example/generics";
